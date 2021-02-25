@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <!-- REFERÊNCIA AO AXIOS -->
+    <script src="js/axios.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        const url = 'dados/estados.json'
+        axios(url).then(resp => {
+            /* Diferentemente do 'fetch' que eu preciso "paresear" o resultado - resultado.innerHTML = JSON.stringify(json)
+            Usando axios eu já tenho o json a minha disposição na resposta */
+            const itens = resp.data.reduce(
+                (html, estado) => html + `<li>${estado.nome}</li>`
+            )
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+        })
+    </script>
+</body>
